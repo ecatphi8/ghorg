@@ -96,9 +96,9 @@ func (rp *RepositoryProcessor) ProcessRepository(repo *scm.Repo, repoNameWithCol
 
 	// Print unified success message (matching original behavior)
 	if repoWillBePulled && repo.Commits.CountDiff > 0 {
-		colorlog.PrintSuccess(fmt.Sprintf("Success %s %s, branch: %s, new commits: %d", action, repo.URL, repo.CloneBranch, repo.Commits.CountDiff))
+		colorlog.PrintSuccess(fmt.Sprintf("Success %s %s, branch: %s, new commits: %d", action, repo.CloneURL, repo.CloneBranch, repo.Commits.CountDiff))
 	} else {
-		colorlog.PrintSuccess(fmt.Sprintf("Success %s %s, branch: %s", action, repo.URL, repo.CloneBranch))
+		colorlog.PrintSuccess(fmt.Sprintf("Success %s %s, branch: %s", action, repo.CloneURL, repo.CloneBranch))
 	}
 }
 

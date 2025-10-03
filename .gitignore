@@ -2,6 +2,7 @@ ghorg
 .env
 debug
 .DS_Store
+.vscode/
 coverage.out
 
 dist/
