@@ -580,11 +580,14 @@ func (c Gitlab) filter(group string, ps []*gitlab.Project) []Repo {
 			if os.Getenv("GHORG_SSH_HOST_PREFIX") != "" {
 				SSHHostPrefix := os.Getenv("GHORG_SSH_HOST_PREFIX")
 				NewPrefix := fmt.Sprintf("git@%s.", SSHHostPrefix)
-				r.CloneURL = strings.Replace(p.SSHURLToRepo,"git@", NewPrefix,1)
+				CloneURL := strings.Replace(p.SSHURLToRepo,"git@", NewPrefix,1)
+				r.CloneURL = CloneURL
+				r.URL = CloneURL
+
 			}else {
 				r.CloneURL = p.SSHURLToRepo
+				r.URL = p.SSHURLToRepo
 			}
-			r.URL = p.SSHURLToRepo
 			repoData = append(repoData, r)
 		}
 
